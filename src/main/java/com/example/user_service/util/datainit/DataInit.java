@@ -15,13 +15,21 @@ public class DataInit {
 
     @PostConstruct
     public void init() {
+
+        // Clear user before inserting
+        userRepository.deleteAll();
+
         User user1 = new User();
-        user1.setName("John Doe");
+        user1.setFirstName("John");
+        user1.setLastName("Doe");
+        user1.setUserName("JohnDoe");
         user1.setEmail("John@sad.com");
 
         User user2 = new User();
-        user2.setName("Jane Doe");
-        user2.setEmail("asdsad@asdsad.com");
+        user2.setFirstName("Jane");
+        user2.setLastName("Doe");
+        user2.setUserName("JaneDoe");
+        user2.setEmail("jane@gmail.com");
 
         userRepository.insertList(List.of(user1, user2));
 
