@@ -6,6 +6,12 @@ spring:
     username: postgres
     password: Virak@123
     driver-class-name: org.postgresql.Driver
+
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/UserMapper.xml
   type-aliases-package: com.example.user_service.model
+
+logging:
+  org.springframework.web: INFO
+
+

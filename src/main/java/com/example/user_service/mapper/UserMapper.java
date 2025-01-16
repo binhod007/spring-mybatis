@@ -1,16 +1,13 @@
 package com.example.user_service.mapper;
 
+import com.example.user_service.dto.request.UserRequestDTO;
+import com.example.user_service.dto.response.UserResponseDTO;
 import com.example.user_service.model.User;
-import org.apache.ibatis.annotations.Mapper;
+import org.mapstruct.Mapper;
 
-import java.util.List;
-
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    User findById(Long id);
-    List<User> findAll();
-    void insert(User user);
-    void update(User user);
-    void delete(Long id);
+    UserResponseDTO toUserResponseDTO(User user);
+    User toModel(UserRequestDTO userRequestDTO);
 }

@@ -1,5 +1,7 @@
 package com.example.user_service.controller;
 
+import com.example.user_service.dto.request.UserRequestDTO;
+import com.example.user_service.dto.response.UserResponseDTO;
 import com.example.user_service.model.User;
 import com.example.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -8,31 +10,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable Long id) {
+    public UserResponseDTO findById(@PathVariable Long id) {
         return userService.findById(id);
     }
 
     @GetMapping
-    public List<User> findAll() {
+    public List<UserResponseDTO> findAll() {
         return userService.findAll();
     }
 
     @PostMapping
-    public void insert(@RequestBody User user) {
-        userService.insert(user);
+    public UserResponseDTO insert(@RequestBody UserRequestDTO userRequestDTO) {
+        return userService.insert(userRequestDTO);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody User user) {
-        user.setId(id);
-        userService.update(user);
+    public UserResponseDTO update(@PathVariable Long id, @RequestBody UserRequestDTO userRequestDTO) {
+        return userService.update(id, userRequestDTO);
     }
 
     @DeleteMapping("/{id}")
