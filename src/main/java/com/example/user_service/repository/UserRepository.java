@@ -8,6 +8,8 @@ public interface UserRepository {
     User findById(Long id);
     List<User> findAll();
     void insert(User user);
+
+    void insertList(List<User> users);
     void update(User user);
     void delete(Long id);
 }

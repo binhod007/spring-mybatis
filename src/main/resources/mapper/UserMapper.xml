@@ -26,6 +26,15 @@
         UPDATE users SET name=#{name}, email=#{email} WHERE id=#{id}
     </update>
 
+    <insert id="insertList" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (name, email)
+        VALUES
+        <foreach collection="list" item="user" separator=",">
+            (#{user.name}, #{user.email})
+        </foreach>
+    </insert>
+
+
     <delete id="delete">
         DELETE FROM users WHERE id = #{id}
     </delete>
