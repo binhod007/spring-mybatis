@@ -62,10 +62,12 @@ public class UserService {
 
     }
 
-    public void delete(Long id) {
+    public String delete(Long id) {
         if (userRepository.findById(id).isEmpty()) {
             throw new ResourceNotFoundException("User", "id", id);
         }
+
         userRepository.delete(id);
+        return String.format("User with ID %d has been successfully deleted.", id);
     }
 }

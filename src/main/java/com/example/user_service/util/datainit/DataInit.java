@@ -13,7 +13,7 @@ import java.util.List;
 public class DataInit {
     private final UserRepository userRepository;
 
-    @PostConstruct
+//    @PostConstruct
     public void init() {
 
         // Clear user before inserting
