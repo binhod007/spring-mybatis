@@ -9,6 +9,7 @@
         <result column="last_name" property="lastName"/>
         <result column="user_name" property="userName"/>
         <result column="email" property="email"/>
+        <result column="password" property="password"/>
     </resultMap>
 
     <select id="findById" resultMap="result" resultType="user">
@@ -20,15 +21,15 @@
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO users (first_name, last_name, user_name, email)
-        VALUES (#{firstName}, #{lastName}, #{userName}, #{email})
+        INSERT INTO users (first_name, last_name, user_name, email, password)
+        VALUES (#{firstName}, #{lastName}, #{userName}, #{email}, #{password})
     </insert>
 
     <insert id="insertList" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO users (first_name, last_name, user_name, email)
+        INSERT INTO users (first_name, last_name, user_name, email, password)
         VALUES
         <foreach collection="list" item="user" separator=",">
-            (#{user.firstName}, #{user.lastName}, #{user.userName}, #{user.email})
+            (#{user.firstName}, #{user.lastName}, #{user.userName}, #{user.email}, #{user.password})
         </foreach>
     </insert>
 
@@ -41,7 +42,7 @@
     </select>
 
     <update id="update">
-        UPDATE users SET first_name=#{firstName}, last_name=#{lastName}, user_name=#{userName}, email=#{email} WHERE id=#{id}
+        UPDATE users SET first_name=#{firstName}, last_name=#{lastName}, user_name=#{userName}, email=#{email}, password=#{password} WHERE id=#{id}
     </update>
 
     <delete id="delete">
